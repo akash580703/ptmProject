@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from Whatsapp import functions,views,localTunnel
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('save/', functions.main, name='main'),
+    path('start/', localTunnel.server, name='server'),
+    url(r'^pdf/$', views.whatsAppApi),
+    url(r'^payment/$', views.payment),
+    url(r'testMe/$',views.testMe),
+    url(r'^pdf/([a-z and %20 and A-Z and 0-9 and -]+)$', views.whatsAppApi),
 ]
